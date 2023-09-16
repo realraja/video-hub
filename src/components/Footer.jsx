@@ -11,7 +11,7 @@ const Footer = () => {
             <HStack borderBottom={'2px solid white'} py={'2'}>
                 <Input placeholder='Enter Email here...' border={'none'} borderRadius={'none'} outline={'none'} focusBorderColor='none' />
                 <Button p={0} colorScheme='purple' variant={'ghost'} borderRadius={'0 20px 20px 0'}>
-                    <AiOutlineSend size={20}/>
+                    <AiOutlineSend />
                 </Button>
             </HStack>
         </VStack>

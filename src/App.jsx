@@ -6,6 +6,8 @@ import Videos from './components/Videos';
 import Upload from './components/Upload';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Courses from './components/Courses';
+import CourseData from './components/CourseData';
 
 
 function App() {
@@ -17,8 +19,12 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/videos' element={<Videos />} />
+      <Route path='/course/:id/:index/:videoid' element={<Videos />} />
+      <Route path='/course/:id/:index' element={<Videos />} />
       <Route path='/upload' element={<Upload />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/course' element={<Courses />} />
+      <Route path='/course/:id' element={<CourseData />} />
       <Route path='/signup' element={<Signup />} />
     </Routes>
 
