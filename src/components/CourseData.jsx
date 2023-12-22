@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import data from '../assets/courseData.json'
 import {  Heading, Container, HStack, VStack, Box, Button } from '@chakra-ui/react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { globalContext } from '../context';
 
 const useQuary = ()=>{
     return new URLSearchParams(useLocation().search)
@@ -10,7 +11,8 @@ const useQuary = ()=>{
 
 const CourseData = () => {
 
-    const params = useParams();
+
+    const {course,setCourse} = useContext(globalContext);
 
     let query = useQuary().get('index');
 
@@ -30,10 +32,10 @@ const CourseData = () => {
             {
 
 
-                (params.id === 'djfguehfrg77d6fsdyfhyugh67e87e487re7y3w7eruh77478389r')?(
-                    <PrintCards api={data[params.id].materials.subjects} query={query} />
+                (course === 'djfguehfrg77d6fsdyfhyugh67e87e487re7y3w7eruh77478389r' || course === 'ABHIMANYU_BSC_SECOND_YEAR')?(
+                    <PrintCards api={data[course].materials.subjects} query={query} setCourse={setCourse} />
                     ):(     
-                        <ErrorPage />                    
+                        <ErrorPage setCourse={setCourse} />                    
                     )
 
 
@@ -48,7 +50,7 @@ const CourseData = () => {
 }
 
 
-const PrintCards = ({api,query})=>(
+const PrintCards = ({api,query,setCourse})=>(
     <HStack wrap={'wrap'} justifyContent={'space-evenly'}>
         {
             (api.length > query && query !== null)?<>
@@ -64,18 +66,24 @@ const PrintCards = ({api,query})=>(
             }</>
             
         }
+
+        <VStack w={'100%'}>
+
+<Button onClick={()=> setCourse(null)} margin={8}  colorScheme='red'> <AiOutlineArrowLeft /> Delete Course</Button>
+        </VStack>
+
     </HStack>
 )
 
-const ErrorPage = () =>(
+const ErrorPage = ({setCourse}) =>(
     <Box textAlign={'Center'} justifyContent={'center'}>
                         <Heading size={'4xl'} margin={8} fontWeight={'medium'} color={'purple.300'} textTransform={'uppercase'} >404! ERROR</Heading>
                         <Heading size={'md'} fontWeight={'medium'} color={'purple.300'} textTransform={'uppercase'} >Sorry! This course is not avlaibal.
                          Please try another Code.</Heading>
 
-                         <Link  to={'/course'}>
-                            <Button margin={8} colorScheme='purple'> <AiOutlineArrowLeft /> Go Back</Button>
-                         </Link>
+                         
+                            <Button onClick={()=> setCourse(null)} margin={8} colorScheme='purple'> <AiOutlineArrowLeft /> Go Back</Button>
+                       
                     </Box>
 )
 
