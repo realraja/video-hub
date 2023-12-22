@@ -209,8 +209,7 @@ const VideoSrcData = ({ videoSrc, name, date }) => (
       <AspectRatio width={'100%'} ratio={16 / 9}>
         <iframe
           title="naruto"
-          src={`https://www.youtube.com/embed/${videoSrc.substring(16)}`}
-          allowFullScreen
+          src={`https://www.youtube.com/embed/${videoSrc.substring(16)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
         />
       </AspectRatio>
     ) : (
@@ -233,6 +232,8 @@ const VideoSrcData = ({ videoSrc, name, date }) => (
 export default Videos;
 
 /*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QI4fH7S8tts?si=S6MzyDCiX9lrdZ2S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 allow_dl
 : 
 true
