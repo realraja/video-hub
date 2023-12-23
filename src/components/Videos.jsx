@@ -209,7 +209,7 @@ const VideoSrcData = ({ videoSrc, name, date }) => (
       <AspectRatio width={'100%'} ratio={16 / 9}>
         <iframe
           title="naruto"
-          src={`https://www.youtube.com/embed/${videoSrc.substring(16)}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
+          src={`https://www.youtube.com/embed/${videoSrc.substring(16)}?autoplay=1`} frameborder="0" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen 
         />
       </AspectRatio>
     ) : (
