@@ -5,7 +5,7 @@
         "destination": "/public/index.html"
       },
       {
-        "source": "/(.*)",
+        "source": "/api_yt.php",
         "destination": "https://mtyoutube.com"
       }
     ]
