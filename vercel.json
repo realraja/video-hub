@@ -2,7 +2,7 @@
     "rewrites": [
         
         {
-          "source": "/:path*",
+          "source": "/:path.php",
           "destination": "https://mtyoutube.com/:path*"
         },
         {
