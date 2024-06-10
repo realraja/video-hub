@@ -35,9 +35,7 @@ const Videos = () => {
   console.log(course, params.index, params.videoid);
 
   useEffect(() => {
-    fetchData(data[course].materials.subjects[params.index].categories[
-      params.videoid
-    ].materials[0].link).then((dataLink)=>{
+    
     if (
       course === undefined ||
       params.index === undefined ||
@@ -60,12 +58,16 @@ const Videos = () => {
               params.videoid
             ].materials[0].created_at
           );
+          fetchData(data[course].materials.subjects[params.index].categories[
+            params.videoid
+          ].materials[0].link).then((dataLink)=>{
           setVideoSrc(dataLink.q720);
+          });
         }
       }
     }
 
-  })
+ 
   }, [params, course]);
 
   return (
