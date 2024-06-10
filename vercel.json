@@ -1,12 +1,12 @@
 {
     "rewrites": [
         {
-          "source": "/",
-          "destination": "https://mtyoutube.com"
-        },
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
+            "source": "/:path*",
+            "destination": "/:path*"
+          },
+        {
+          "source": "/:path*",
+          "destination": "https://mtyoutube.com/:path*"
+        }
     ]
   }
