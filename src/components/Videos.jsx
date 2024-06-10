@@ -12,11 +12,11 @@ import { AiOutlineDownload } from 'react-icons/ai';
 
 import data from '../assets/courseData.json';
 import { globalContext } from '../context';
+import { fetchData } from '../actions/FetchYoutube';
 
 const Videos = () => {
   const videosArr = [
-    'https://player.vimeo.com/progressive_redirect/playback/689949818/rendition/540p?loc=external&oauth2_token_id=1027659655&signature=cf602155bf49e4e74db6f2ec9d4ecf067fbab44c4295a8950d58ecdb88910882',
-    'https://player.vimeo.com/progressive_redirect/playback/697718184/rendition/360p?loc=external&oauth2_token_id=1027659655&signature=26d69c3df603d083fedd663acaab4d35a33444d11033a626864cf1e578e136cf',
+    'https://rr4---sn-ab5l6nrl.googlevideo.com/videoplayback?expire=1718052059&ei=exBnZsa_L9S3kucP5e6YkAY&ip=54.160.180.29&id=o-APN36pEGaoc1xa8oc9n0heB1xHnAvUH-PzQagopDeDjw&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&mh=Ds&mm=31%2C29&mn=sn-ab5l6nrl%2Csn-ab5sznzl&ms=au%2Crdu&mv=m&mvi=4&pl=14&initcwndbps=2176250&bui=AbKP-1NLqs0BuZmj1MJTfC06WmhSm2bkCKv2lFGhBwroFvNDdYViWqKQdFX_oJB-dMNPt1AFgSsdDytc&vprv=1&mime=video%2Fmp4&rqh=1&gir=yes&clen=27731467&ratebypass=yes&dur=611.172&lmt=1717888601190675&mt=1718029996&fvip=2&c=ANDROID_CREATOR&txp=5538434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Cmime%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIhAJjHY4fs6dQMOzqZO0xPWYLSe1ZKTDz43PG6Y_UukojXAiA2AOxP2wLwXjbT8O29SfMs0XMGvSk6i_kTWHuq98R3wQ%3D%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AHlkHjAwRQIgX6FTx72OcgrlPycJ4lTCeQcsXFgN70CB00-5gQ7GP80CIQDuKvAKPI-NaRSIudrrt8BRi5DPNNSAVtM7B8GHmXrcQg%3D%3D&title=Mtyoutube.com-Indian+Families+%26+Andhwishvas',
     'https://player.vimeo.com/external/510850877.hd.mp4?s=d5e9ed9ea40ba755e28512cce6c1ad00d92506f7&profile_id=174',
     'https://player.vimeo.com/external/577442929.hd.mp4?s=95231c8a7fe2066ffb640204591b01a6c326b97c&profile_id=174',
     'https://player.vimeo.com/progressive_redirect/playback/689925384/rendition/360p?loc=external&oauth2_token_id=1027659655&signature=5a819f11298d53cc1ed85837342f47ea61c8f95b9aeeb0c38edab72a80e0db78',
@@ -35,6 +35,9 @@ const Videos = () => {
   console.log(course, params.index, params.videoid);
 
   useEffect(() => {
+    fetchData(data[course].materials.subjects[params.index].categories[
+      params.videoid
+    ].materials[0].link).then((dataLink)=>{
     if (
       course === undefined ||
       params.index === undefined ||
@@ -43,8 +46,8 @@ const Videos = () => {
       setName('lecture 1');
     } else {
       if (
-        course === 'djfguehfrg77d6fsdyfhyugh67e87e487re7y3w7eruh77478389r' ||
-        course === 'ABHIMANYU_BSC_SECOND_YEAR'
+        course === 'rajajihellokdjafhfughjvnufru' ||
+        course === 'rajajihellokjkdfjakdjfkjadkfjaidjfierfjkjdfi'
       ) {
         if (data[course].materials.subjects.length) {
           setName(
@@ -57,18 +60,16 @@ const Videos = () => {
               params.videoid
             ].materials[0].created_at
           );
-          setVideoSrc(
-            data[course].materials.subjects[params.index].categories[
-              params.videoid
-            ].materials[0].link
-          );
+          setVideoSrc(dataLink.q720);
         }
       }
     }
+
+  })
   }, [params, course]);
 
   return (
-    <Stack direction={['column', 'row']} h={'100vh'}>
+    <Stack direction={['column', 'row']} h={'100vh'} p={5}>
       {course === undefined ||
       params.index === undefined ||
       params.videoid === undefined ? (
@@ -81,7 +82,7 @@ const Videos = () => {
           setVideoSrc={setVideoSrc}
         />
       ) : (
-        ( (course === 'djfguehfrg77d6fsdyfhyugh67e87e487re7y3w7eruh77478389r' || course === 'ABHIMANYU_BSC_SECOND_YEAR') && (data[course].materials.subjects.length > params.index &&
+        ( (course === 'rajajihellokdjafhfughjvnufru' || course === 'rajajihellokjkdfjakdjfkjadkfjaidjfierfjkjdfi') && (data[course].materials.subjects.length > params.index &&
           data[course].materials.subjects[params.index].categories.length >
             params.videoid) )? (
               <VideoData
@@ -159,7 +160,12 @@ const VideoData = ({
   setVideoSrc,
   setDate,
   setName,
-}) => (
+}) => {
+  const handeleSetLink = async(link) =>{
+    const data = await fetchData(link);
+    setVideoSrc(data.q720);
+  }
+  return (
   <>
     <VideoSrcData name={name} date={date} videoSrc={videoSrc} />
 
@@ -178,7 +184,7 @@ const VideoData = ({
               p={6}
               colorScheme="purple"
               onClick={() => {
-                setVideoSrc(item.link);
+                handeleSetLink(item.link)
                 setDate(item.created_at);
                 setName(item.name);
               }}
@@ -201,7 +207,7 @@ const VideoData = ({
       ))}
     </VStack>
   </>
-);
+)};
 
 const VideoSrcData = ({ videoSrc, name, date }) => (
   <VStack w={'full'}>
@@ -213,18 +219,18 @@ const VideoSrcData = ({ videoSrc, name, date }) => (
         />
       </AspectRatio>
     ) : (
+      <AspectRatio width={800} ratio={16 / 9}>
       <video
         controls
-        controlsList="nodownload"
+        // controlsList="nodownload"
         src={videoSrc}
         style={{ width: '100%' }}
-      ></video>
+      ></video></AspectRatio>
     )}
 
     <VStack alignItems={'flex-start'} p={8} w={'full'} overflowY={'auto'}>
       <Heading>{name}</Heading>
       <p>{date}</p>
-      <Text>Lorem, ipsum dolor sit {videoSrc}</Text>
     </VStack>
   </VStack>
 );

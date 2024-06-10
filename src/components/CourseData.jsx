@@ -32,7 +32,7 @@ const CourseData = () => {
             {
 
 
-                (course === 'djfguehfrg77d6fsdyfhyugh67e87e487re7y3w7eruh77478389r' || course === 'ABHIMANYU_BSC_SECOND_YEAR')?(
+                (course === 'rajajihellokdjafhfughjvnufru' || course === 'rajajihellokjkdfjakdjfkjadkfjaidjfierfjkjdfi')?(
                     <PrintCards api={data[course].materials.subjects} query={query} setCourse={setCourse} />
                     ):(     
                         <ErrorPage setCourse={setCourse} />                    
