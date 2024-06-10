@@ -164,7 +164,7 @@ const VideoData = ({
 }) => {
   const handeleSetLink = async(link) =>{
     const data = await fetchData(link);
-    console.log(data);
+    // console.log(data);
     setVideoSrc(data.q720);
   }
   return (
