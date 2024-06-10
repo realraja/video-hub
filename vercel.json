@@ -1,7 +1,6 @@
 {
     "rewrites": [
         {
-          "source": "/:path*",
           "destination": "https://mtyoutube.com/:path*"
         },
       {
