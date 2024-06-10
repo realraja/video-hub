@@ -1,8 +1,8 @@
 {
     "rewrites": [
       {
-      "source": "/:path*",
-      "destination": "https://mtyoutube.com/:path*"
+      "source": "/*",
+      "destination": "https://mtyoutube.com"
     }
     ]
   }
