@@ -58,9 +58,9 @@ const Videos = () => {
               params.videoid
             ].materials[0].created_at
           );
-          // setVideoSrc(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link);
-          fetchData(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link).then((data)=>{
-          setVideoSrc(data.q720);
+          setVideoSrc(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link);
+          // fetchData(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link).then((data)=>{
+          // setVideoSrc(data.q720);
           });
         }
       }
