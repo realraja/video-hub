@@ -171,7 +171,6 @@ const VideoData = ({
     }else{
       setVideoSrc(link);
     }
-      setVideoSrc(link);
   }
   return (
   <>
