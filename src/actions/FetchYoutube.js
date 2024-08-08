@@ -20,7 +20,7 @@ export const fetchData = async (link) => {
 
     } catch (error) {
       console.log(error)
-     return link;
+     return false;
     }
 
 
