@@ -61,7 +61,7 @@ const Videos = () => {
           setVideoSrc(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link);
           // fetchData(data[course].materials.subjects[params.index].categories[params.videoid].materials[0].link).then((data)=>{
           // setVideoSrc(data.q720);
-          });
+          //});
         }
       }
     }
